@@ -2,7 +2,11 @@ from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__)  # 🛠 Move this line to the top before @app.route
+
+@app.route('/')
+def home():
+    return "🎉 Customer Churn Prediction API is running!"
 
 # Load the trained model
 model = joblib.load("churn_model.pkl")
