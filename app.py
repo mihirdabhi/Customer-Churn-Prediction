@@ -2,19 +2,16 @@ from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
 
-# Define app FIRST
-app = Flask(__name__)
+app = Flask(__name__)  # ❗ This must come BEFORE route definitions
 
-# Load model
+# Load the trained model
 model = joblib.load("churn_model.pkl")
 
-# Home route
 @app.route('/')
 def home():
     return "🎉 Customer Churn Prediction API is running!"
 
-# Predict route
-@app.route("/predict", methods=["POST"])
+@app.route('/predict', methods=['POST'])
 def predict():
     try:
         data = request.get_json(force=True)
@@ -29,6 +26,5 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-# Run app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000, debug=True)
