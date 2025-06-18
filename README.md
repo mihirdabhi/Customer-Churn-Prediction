@@ -1,17 +1,17 @@
-# 📊 Customer Churn Prediction – End-to-End Machine Learning Project
+# 📊 Customer Churn Prediction & Business Insights Platform – Full-Stack ML Project
 
-This project builds a complete machine learning pipeline to analyze and predict customer churn for a telecom company. It includes data exploration, feature engineering, model training, evaluation, and deployment preparation using Python and industry-standard tools.
+This project builds a complete **end-to-end machine learning pipeline** to analyze and predict customer churn for a telecom company. It includes data collection, ETL workflows using AWS, model development, cloud-based deployment, and interactive dashboards for insights.
 
 ---
 
 ## ✅ Key Objectives
 
-- Understand and visualize churn trends in customer data
-- Clean and preprocess raw data into model-ready format
-- Train classification models (Random Forest, XGBoost)
-- Evaluate performance using classification metrics
-- Prepare for model deployment (API, Docker, CI/CD)
-- Create insightful visualizations for business teams
+- Automate churn data ingestion and transformation (AWS Lambda + RDS)
+- Train and evaluate ML models (Random Forest, XGBoost)
+- Serve real-time predictions via Flask API (hosted on Render)
+- Containerize app with Docker
+- Automate CI/CD with GitHub Actions
+- Visualize insights with Tableau (or AWS QuickSight)
 
 ---
 
@@ -21,10 +21,10 @@ This project builds a complete machine learning pipeline to analyze and predict 
 |----------------|------------------------------------------|
 | Programming     | Python, Pandas, NumPy, Matplotlib, Seaborn |
 | Machine Learning| scikit-learn, XGBoost                   |
-| Deployment Prep | Docker, joblib                          |
-| Automation      | GitHub Actions                          |
-| Visualization   | Tableau (or Matplotlib/Seaborn)         |
-| Storage         | CSV (simulate S3), PostgreSQL (optional) |
+| Deployment Prep | Flask, Docker, Render, joblib           |
+| Automation      | GitHub Actions, AWS Lambda              |
+| Visualization   | Tableau, SQL (RDS)                      |
+| Storage         | AWS S3, PostgreSQL (RDS), CSV           |
 
 ---
 
@@ -32,14 +32,23 @@ This project builds a complete machine learning pipeline to analyze and predict 
 
 ```
 customer-churn-prediction/
-├── EDA.ipynb                   # Data cleaning + visual insights
-├── 02_model_training.ipynb     # Training + evaluation notebook
-├── cleaned_churn_data.csv      # Cleaned dataset ready for modeling
-├── churn_model.pkl             # Trained ML model (saved)
-├── requirements.txt            # Dependencies
-├── Dockerfile                  # Containerization setup
-├── schema.sql                  # SQL table structure
-└── .github/workflows/main.yml  # CI/CD workflow
+├── etl_lambda/
+│   ├── etl_lambda_s3_to_s3.py
+│   ├── etl_lambda_s3_to_rds.py
+│   └── requirements.txt
+├── model/
+│   ├── train_model.ipynb
+│   └── churn_model.pkl
+├── app/
+│   └── app.py
+├── dashboard/
+│   └── tableau_screenshots/
+├── Dockerfile
+├── .github/workflows/
+│   └── ci.yml
+├── schema.sql
+├── requirements.txt
+└── README.md
 ```
 
 ---
@@ -71,9 +80,11 @@ customer-churn-prediction/
 
 ## 🚀 Next Improvements
 
-- Build a REST API to serve predictions
-- Add retraining automation with Airflow or Lambda
-- Deploy a Streamlit dashboard or Tableau dashboard for stakeholders
+- ✅ Flask API already deployed with Render
+- 🔄 Scheduled retraining via Lambda or Airflow (in progress)
+- 📊 Tableau dashboard + SQL-based KPIs from RDS
+- 📦 Add MLflow tracking for experiments (optional)
+- 🐳 Push Docker image to AWS ECR
 
 ---
 
@@ -85,4 +96,4 @@ customer-churn-prediction/
 
 ---
 
-> *Feel free to fork this project or use it as a starting point for your own machine learning pipelines.*
+> *This full-stack ML project is designed to simulate real-world churn management and help recruiters see your data + engineering + product mindset. Fork it or extend it!*
