@@ -16,6 +16,11 @@ def predict():
     try:
         data = request.get_json(force=True)
         df = pd.DataFrame([data])
+
+        # Drop irrelevant columns like customerID if they exist
+        if 'customerID' in df.columns:
+            df = df.drop('customerID', axis=1)
+
         prediction = model.predict(df)[0]
         probability = model.predict_proba(df)[0][1]
 
